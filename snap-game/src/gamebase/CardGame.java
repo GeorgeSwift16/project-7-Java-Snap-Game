@@ -1,9 +1,7 @@
 package gamebase;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class CardGame {
 
@@ -47,7 +45,7 @@ public class CardGame {
     }
     public void getDeck() {
 
-        for (Card card : deckOfCards) {
+        for (Card card : this.deckOfCards) {
             System.out.println(card);
         }
 
@@ -56,7 +54,6 @@ public class CardGame {
     public Card dealCard () {
         Card firstCard = this.deckOfCards.get(0);
         this.deckOfCards.remove(firstCard);
-        this.deckOfCards.add(this.deckOfCards.size(), firstCard);
         return firstCard;
     }
 
