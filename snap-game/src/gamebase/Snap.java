@@ -7,7 +7,9 @@ import java.util.Scanner;
 public class Snap extends CardGame {
     public Scanner input = new Scanner(System.in);
 
-    public ArrayList<Player> playerList;
+    public boolean playerOneTurn = true;
+
+    public ArrayList<Player> playerList = new ArrayList<>();
     public int gameLives = 0;
     public Card cardOnTable = new Card("K", "5", 6);
     public Card drawnCard = new Card("K", "5", 3);
@@ -32,21 +34,26 @@ public class Snap extends CardGame {
     }
 
     public void startGame() {
-        System.out.println("welcome to snap, how many lives would you like to play? \n please enter a number between 1 and 5");
-        while (this.gameLives <= 0 || this.gameLives > 5) {
+        System.out.println("how many lives would you like to play? \n please enter 1");
+        while (this.gameLives != 1) {
             setLives();
         }
-
-        System.out.println("Great you've selected " + this.gameLives + " lives");
+        System.out.println("how many players are going to play 1 or 2?");
+        int numberOfPlayers = input.nextInt();
+        for (int i = 0; i < numberOfPlayers; i++) {
+            System.out.println("please enter a player name");
+            this.playerList.add(new Player(input.next(), this.gameLives));
+        }
+        System.out.println(this.playerList.get(1).playerName);
         createDeck();
         shuffleDeck();
-        gameOperation();
+        gameOperation(playerList);
 
     }
 //    this all needs refactoring to seperate functions and vars for better readability.
 
 
-    public void gameOperation() {
+    public void gameOperation(ArrayList<Player> playerList) {
 
         System.out.println("press enter to take a turn");
         this.cardOnTable = dealCard();

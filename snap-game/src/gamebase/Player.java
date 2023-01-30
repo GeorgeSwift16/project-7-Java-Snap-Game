@@ -3,11 +3,11 @@ package gamebase;
 public class Player {
 
     public String playerName;
-    public int lives;
+    public int playerLives;
 
-    public Player(String playerName, int lives) {
+    public Player(String playerName, int playerLives) {
         this.playerName = playerName;
-        this.lives = lives;
+        this.playerLives = playerLives;
     }
 
 
